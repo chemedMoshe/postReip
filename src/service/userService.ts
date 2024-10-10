@@ -1,5 +1,5 @@
-import {IUser} from "../models/userModel";
+import userDB,{IUser} from "../models/userModel";
 
 const cratenewUser = (userModel:IUser) => {
-    
+
 }

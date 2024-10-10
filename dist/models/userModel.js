@@ -28,20 +28,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const postModel_1 = __importDefault(require("./postModel"));
+const validator_1 = require("validator");
 const UserSchema = new mongoose_1.Schema({
     username: {
         type: String,
         required: [true, "Please provide a username"],
-        min: [4, 'To few chars']
+        minlength: [4, "To few chars"],
     },
     email: {
         type: String,
-        required: [true, "Please provide a email"]
+        required: [true, "Please provide a email"],
+        validate: [validator_1.isEmail, "Please enter a valid email"],
+        unique: true,
     },
     profile: {
-        bio: { String, default: null },
-        socialLinks: [String],
+        bio: { String },
+        socialLinks: { type: [String] },
     },
-    posts: [{ type: mongoose_1.Schema.Types.ObjectId, ref: postModel_1.default }],
+    posts: {
+        type: [mongoose_1.default.Types.ObjectId, { ref: postModel_1.default }],
+        defult: [],
+    },
 });
 exports.default = mongoose_1.default.model("User", UserSchema);

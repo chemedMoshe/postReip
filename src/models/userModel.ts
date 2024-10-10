@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
-import Post from "./postModel";
+import PostModel from "./postModel";
 import val, { isEmail } from "validator";
 export interface IUser extends Document {
   username: string;
@@ -28,7 +28,7 @@ const UserSchema = new Schema<IUser>({
     socialLinks: { type: [String] },
   },
   posts: {
-    type: [mongoose.Types.ObjectId, { ref: Post }],
+    type: [mongoose.Types.ObjectId, { ref: "Post" }],
     defult: [],
   },
 });

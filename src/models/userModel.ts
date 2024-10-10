@@ -23,7 +23,7 @@ const UserSchema = new Schema<IUser>({
    required:[true,"Please provide a email"]
   },
   profile: {
-    bio: String,
+    bio: {String, default: null},
     socialLinks: [String],
   },
   posts: [{ type: Schema.Types.ObjectId, ref: Post }],

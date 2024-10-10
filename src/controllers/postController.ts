@@ -7,7 +7,9 @@ export const createPost = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {};
+): Promise<void> => {
+  
+};
 
 // Delete a post
 export const deletePost = async (

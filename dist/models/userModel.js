@@ -39,7 +39,7 @@ const UserSchema = new mongoose_1.Schema({
         required: [true, "Please provide a email"]
     },
     profile: {
-        bio: String,
+        bio: { String, default: null },
         socialLinks: [String],
     },
     posts: [{ type: mongoose_1.Schema.Types.ObjectId, ref: postModel_1.default }],

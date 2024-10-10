@@ -14,7 +14,7 @@ export interface IPost extends Document {
   comments: IComment[];
 }
 
-const CommentSchema = new Schema<IComment>({});
+
 
 const PostSchema = new Schema<IPost>({})
 

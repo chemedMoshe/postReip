@@ -22,7 +22,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const UserSchema = new mongoose_1.Schema({});
+const postModel_1 = __importDefault(require("./postModel"));
+const UserSchema = new mongoose_1.Schema({
+    username: {
+        type: String,
+        required: [true, "Please provide a username"],
+        min: [4, 'To few chars']
+    },
+    email: {
+        type: String,
+        required: [true, "Please provide a email"]
+    },
+    profile: {
+        bio: { String, default: null },
+        socialLinks: [String],
+    },
+    posts: [{ type: mongoose_1.Schema.Types.ObjectId, ref: postModel_1.default }],
+});
 exports.default = mongoose_1.default.model("User", UserSchema);

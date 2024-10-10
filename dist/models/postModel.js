@@ -24,6 +24,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const CommentSchema = new mongoose_1.Schema({});
-const PostSchema = new mongoose_1.Schema({});
+const PostSchema = new mongoose_1.Schema({
+    title: { type: String,
+        required: [true, "Please provide a title"],
+        min: [4, 'To few chars']
+    },
+    content: { type: String,
+        required: [true, "Please provide a content"],
+        min: [2, 'To few chars'],
+    }
+});
 exports.default = mongoose_1.default.model("Post", PostSchema);

@@ -1,5 +1,7 @@
-import userDB,{IUser} from "../models/userModel";
+import userDB, { IUser } from "../models/userModel";
 
-const cratenewUser = (userModel:IUser) => {
+export const cratenewUser = (userModel: IUser) => {
+  const newUser = new userDB(userModel);
 
-}
+  return newUser.save();
+};
